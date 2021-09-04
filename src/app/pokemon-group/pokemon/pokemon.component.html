@@ -1,0 +1,58 @@
+<app-pokemon-group>
+    <div *ngFor="let poke of pokemon" class="card pokmemon-card col-6 col-sm-3 col-md-2 col-lg-2 col-xl-1">
+        <img *ngIf="poke.spriteFront" (click)="triggerModal(modalData); getSpecies(poke)" class="card-img-top pointer"
+            src="{{poke.spriteFront}}" alt="Card image cap">
+        <div *ngIf="poke.spriteFront" class="card-body">
+            <h5 class="card-title capitalize">{{poke.name}}</h5>
+            <span class="capitalize type-pokemon" *ngFor="let types of poke.types" [ngClass]="{
+    'normal-type':types.type.name === 'normal',
+    'fire-type':types.type.name === 'fire',
+    'water-type':types.type.name === 'water',
+    'grass-type':types.type.name === 'grass',
+    'electric-type':types.type.name === 'electric',
+    'ice-type':types.type.name === 'ice',
+    'fighting-type':types.type.name === 'fighting',
+    'poison-type':types.type.name === 'poison',
+    'ground-type':types.type.name === 'ground',
+    'flying-type':types.type.name === 'flying',
+    'psychic-type':types.type.name === 'psychic',
+    'bug-type':types.type.name === 'bug',
+    'rock-type':types.type.name === 'rock',
+    'ghost-type':types.type.name === 'ghost',
+    'dark-type':types.type.name === 'dark',
+    'dragon-type':types.type.name === 'dragon',
+    'steel-type':types.type.name === 'steel',
+    'fairy-type':types.type.name === 'fairy'
+  }">{{types.type.name}} </span>
+        </div>
+    </div>
+</app-pokemon-group>
+<div class="row m0">
+    <div class="col-12 text-align">
+        <button *ngIf="currentPokemonId <= 898" (click)="gettingPokemonBatch()" class="get-pokemon-btn bold pokmemon-card">Load
+            More!</button>
+    </div>
+</div>
+
+<ng-template #modalData let-modal>
+    <div *ngIf="pokemonName" class="modal-header">
+        <h4 class="modal-title capitalize" id="modal-basic-title">{{pokemonName}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div [ngClass]="!pokemonPicBack ? 'margin-auto' : ''" class="col-6">
+                <img class="poke-modal-sprites pokmemon-card-sprite" src="{{pokemonPicFront}}" alt="{{pokemonName}}">
+            </div>
+            <div *ngIf="pokemonPicBack" class="col-6">
+                <img class="poke-modal-sprites pokmemon-card-sprite" src="{{pokemonPicBack}}" alt="{{pokemonName}}">
+            </div>
+        </div>
+        <div *ngIf="!pokemonName && !pokemonPicFront && !pokemonPicBack && !pokemonDescription && !pokemonHeight && !pokemonWeight"
+            class="loader margin-auto"></div>
+        <p *ngIf="pokemonDescription"><span class="bold">Description:</span> {{pokemonDescription}}</p>
+        <p *ngIf="pokemonHeight"><span class="bold">Height:</span> {{pokemonHeight}}</p>
+        <p *ngIf="pokemonWeight"><span class="bold">Weight:</span> {{pokemonWeight}}</p>
+    </div>
+    <!-- <div class="modal-footer">
+    </div> -->
+</ng-template>
