@@ -31,9 +31,10 @@
     "@ionic/storage-angular": "^3.0.6",
     "angular-cd-timer": "^3.0.0",
     "angular-disable-browser-back-button": "^1.0.2",
+    "bootstrap": "^5.3.2",
     "ionicons": "^6.0.3",
     "ng-circle-progress": "^1.7.0",
-    "ngx-toastr": "^16.1.0",
+    "ngx-toastr": "^18.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
